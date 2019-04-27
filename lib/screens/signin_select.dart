@@ -1,22 +1,22 @@
 import 'package:ageru/components/gradient-button.dart';
-import 'package:ageru/components/navigator-hub.dart';
+import 'package:ageru/screens/signin.dart';
+import 'package:ageru/screens/signup_step_1.dart';
 import 'package:ageru/theme.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 
-class AuthScreen extends StatefulWidget {
+class SigninSelectScreen extends StatefulWidget {
 
   @override
-  _AuthScreenState createState() => _AuthScreenState();
+  _SigninSelectScreenState createState() => _SigninSelectScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen> {
+class _SigninSelectScreenState extends State<SigninSelectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Container(
         padding: EdgeInsets.all(30),
         child: _buildContent()
@@ -28,7 +28,7 @@ class _AuthScreenState extends State<AuthScreen> {
     return Container(
       margin: EdgeInsets.only(bottom: 40),
       child: FractionallySizedBox(
-        child: Image.asset('assets/images/logo.png'),
+        child: Image.asset('assets/images/signin_header.png'),
         widthFactor: 0.6
       )
     );
@@ -36,7 +36,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
   Widget _facebookAuthSocialButton() {
     return Container(
-      margin: EdgeInsets.only(bottom: 30),
+      margin: EdgeInsets.only(bottom: 20),
       height: 50,
       child: ButtonTheme(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
@@ -57,7 +57,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
   Widget _googleAuthSocialButton() {
     return Container(
-      margin: EdgeInsets.only(bottom: 30),
+      margin: EdgeInsets.only(bottom: 20),
       height: 50,
       child: ButtonTheme(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
@@ -78,13 +78,13 @@ class _AuthScreenState extends State<AuthScreen> {
 
   Widget _signUpButton() {
     return Container(
-      margin: EdgeInsets.only(bottom: 30),
+      margin: EdgeInsets.only(bottom: 20),
       child: GradientButton(
         height: 50.0,
-        onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NavigatorHub())),
+        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SignupStep1Screen())),
         child: Text(
           'SIGN UP',
-          style: TextStyle(color: Colors.white, fontSize: 14, fontFamily: 'Avenir-roman'),
+          style: TextStyle(color: Colors.white, fontSize: 14),
         ),
         gradient: LinearGradient(
           colors: <Color>[AppThemeProvider.teal, AppThemeProvider.lime,],
@@ -100,9 +100,9 @@ class _AuthScreenState extends State<AuthScreen> {
         padding: EdgeInsets.all(13),
         borderSide: BorderSide(width: 1.5, color: AppThemeProvider.teal),
           child: Text("SIGN IN",
-            style: TextStyle(color: AppThemeProvider.teal, fontSize: 14, fontFamily: 'Avenir-roman')
+            style: TextStyle(color: AppThemeProvider.teal, fontSize: 14)
           ),
-          onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NavigatorHub())),
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SigninScreen())),
           shape: RoundedRectangleBorder(
             borderRadius:  BorderRadius.circular(5.0)
           )
@@ -145,9 +145,7 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   _buildContent() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+    return ListView(
       children: <Widget>[
         _headerImage(),
         _facebookAuthSocialButton(),

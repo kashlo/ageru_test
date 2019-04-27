@@ -1,5 +1,5 @@
 import 'package:ageru/components/gradient-button.dart';
-import 'package:ageru/screens/auth.dart';
+import 'package:ageru/screens/signin_select.dart';
 import 'package:ageru/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -16,7 +16,6 @@ class _TutorialScreenState extends State<TutorialScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Container(
         padding: EdgeInsets.all(30),
         child: Swiper(
@@ -74,7 +73,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
     return Container(padding: EdgeInsets.only(top: 40, left: 20, right: 20),
       child: Text(title,
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 22, fontFamily: 'Avenir-roman')
+        style: TextStyle(fontSize: 22)
       )
     );
   }
@@ -83,10 +82,10 @@ class _TutorialScreenState extends State<TutorialScreen> {
     return Container(
       margin: EdgeInsets.only(top: 30),
       child: GradientButton(
-        onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AuthScreen())),
+        onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SigninSelectScreen())),
         child: Text(
           'GET STARTED',
-          style: TextStyle(color: Colors.white, fontSize: 14, fontFamily: 'Avenir-roman'),
+          style: TextStyle(color: Colors.white, fontSize: 14),
         ),
         gradient: LinearGradient(
           colors: <Color>[AppThemeProvider.teal, AppThemeProvider.lime,],

@@ -8,11 +8,12 @@ class AppThemeProvider {
   static const lime = Color(0xff38ef7d);
   static const facebookBlue = Color(0xff4267b2);
   static const googleRed = Color(0xffdb4437);
-
+  static const grey = Color(0xffb0b0b0);
 
 
   static final current = ThemeData(
     accentColor: teal,
-    backgroundColor: Colors.white,
+    fontFamily: 'Avenir-roman',
+    scaffoldBackgroundColor: Colors.white,
   );
 }
