@@ -1,14 +1,12 @@
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+
 import 'package:ageru/components/gradient-button.dart';
 import 'package:ageru/models/user.dart';
 import 'package:ageru/screens/signin.dart';
 import 'package:ageru/screens/signup_step_4.dart';
 import 'package:ageru/theme.dart';
-import 'package:ageru/ui/form_field_decoration.dart';
-import 'package:ageru/ui/signup_layout.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:ageru/components/signup_layout.dart';
 
 class SignupStep3Screen extends StatefulWidget {
   SignupStep3Screen({Key key, this.user}) : super(key: key);
@@ -63,13 +61,13 @@ class _SignupStep3ScreenState extends State<SignupStep3Screen> {
             }
           },
           keyboardType: TextInputType.text,
-          decoration: FormFieldDecoration(
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Image.asset('assets/icons/user.png', width: 15),
-            ),
-            "Name"
-          ).build()
+          decoration: InputDecoration(
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Image.asset('assets/icons/user.png', width: 15),
+              ),
+              labelText: "Name"
+          )
         ),
         SizedBox(height: 50),
         GradientButton(

@@ -1,11 +1,12 @@
-import 'package:ageru/components/gradient-button.dart';
-import 'package:ageru/screens/signin.dart';
-import 'package:ageru/screens/signup_step_1.dart';
-import 'package:ageru/theme.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
+
+import 'package:ageru/components/gradient-button.dart';
+import 'package:ageru/screens/signin.dart';
+import 'package:ageru/screens/signup_step_1.dart';
+import 'package:ageru/theme.dart';
 
 class SigninSelectScreen extends StatefulWidget {
 

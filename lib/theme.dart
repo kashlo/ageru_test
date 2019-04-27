@@ -15,5 +15,28 @@ class AppThemeProvider {
     accentColor: teal,
     fontFamily: 'Avenir-roman',
     scaffoldBackgroundColor: Colors.white,
+    appBarTheme: AppBarTheme(
+      brightness: Brightness.light,
+      elevation: 0,
+      iconTheme: IconThemeData(
+        color: Colors.black
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      labelStyle: TextStyle(),
+      contentPadding: EdgeInsets.only(bottom: 5),
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: AppThemeProvider.grey)
+      ),
+      errorBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: AppThemeProvider.grey)
+      ),
+      border: UnderlineInputBorder(
+        borderSide: BorderSide(color: AppThemeProvider.grey)
+      ),
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: AppThemeProvider.grey)
+      )
+    )
   );
 }

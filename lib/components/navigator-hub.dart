@@ -29,10 +29,9 @@ class _NavigatorHubState extends State<NavigatorHub> {
 
   @override
   void initState() {
-      screens = [home, deal, chat, settings];
-      print(screens);
-      currentScreen = home;
-      super.initState();
+    super.initState();
+    screens = [home, deal, chat, settings];
+    currentScreen = home;
   }
 
   @override
@@ -45,45 +44,51 @@ class _NavigatorHubState extends State<NavigatorHub> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.photo_camera),
         backgroundColor: AppThemeProvider.teal,
-        onPressed: getImage),
+        onPressed: getImage
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-          currentIndex: currentTab,
-          onTap: (int index) async {
-            setState(() {
-              currentTab = index;
-              currentScreen = screens[index];
-            });
-          },
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.pin_drop, color: Colors.grey.shade300, size: 30),
-              activeIcon: Icon(Icons.pin_drop, color: AppThemeProvider.teal, size: 30),
-              title: Text('Home', style: TextStyle(color: Colors.black)),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.dashboard, color: Colors.grey.shade300, size: 30),
-              activeIcon: Icon(Icons.dashboard, color: AppThemeProvider.teal, size: 30),
-              title: Text('Deal', style: TextStyle(color: Colors.black)),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.question_answer, color: Colors.grey.shade300, size: 30),
-              activeIcon: Icon(Icons.question_answer, color: AppThemeProvider.teal, size: 30),
-              title: Text('Chat', style: TextStyle(color: Colors.black)),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings, color: Colors.grey.shade300, size: 30),
-              activeIcon: Icon(Icons.settings, color: AppThemeProvider.teal, size: 30),
-              title: Text('Settings', style: TextStyle(color: Colors.black)),
-            ),
-          ]),
+      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
   Future getImage() async {
     var _image = await ImagePicker.pickImage(source: ImageSource.camera);
     setState(() {image = _image;});
+  }
+
+  _buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      currentIndex: currentTab,
+      onTap: (int index) async {
+        setState(() {
+          currentTab = index;
+          currentScreen = screens[index];
+        });
+      },
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.pin_drop, color: Colors.grey.shade300, size: 30),
+          activeIcon: Icon(Icons.pin_drop, color: AppThemeProvider.teal, size: 30),
+          title: Text('Home', style: TextStyle(color: Colors.black)),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.dashboard, color: Colors.grey.shade300, size: 30),
+          activeIcon: Icon(Icons.dashboard, color: AppThemeProvider.teal, size: 30),
+          title: Text('Deal', style: TextStyle(color: Colors.black)),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.question_answer, color: Colors.grey.shade300, size: 30),
+          activeIcon: Icon(Icons.question_answer, color: AppThemeProvider.teal, size: 30),
+          title: Text('Chat', style: TextStyle(color: Colors.black)),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.settings, color: Colors.grey.shade300, size: 30),
+          activeIcon: Icon(Icons.settings, color: AppThemeProvider.teal, size: 30),
+          title: Text('Settings', style: TextStyle(color: Colors.black)),
+        ),
+      ]
+    );
   }
 
 }

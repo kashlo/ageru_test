@@ -1,14 +1,12 @@
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+
 import 'package:ageru/components/gradient-button.dart';
 import 'package:ageru/models/user.dart';
 import 'package:ageru/screens/signin.dart';
 import 'package:ageru/screens/signup_step_3.dart';
 import 'package:ageru/theme.dart';
-import 'package:ageru/ui/form_field_decoration.dart';
-import 'package:ageru/ui/signup_layout.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:ageru/components/signup_layout.dart';
 
 class SignupStep2Screen extends StatefulWidget {
   SignupStep2Screen({Key key, this.user}) : super(key: key);
@@ -64,13 +62,13 @@ class _SignupStep2ScreenState extends State<SignupStep2Screen> {
             }
           },
           keyboardType: TextInputType.text,
-          decoration: FormFieldDecoration(
-            Padding(
+          decoration: InputDecoration(
+            prefixIcon: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Image.asset('assets/icons/lock.png', width: 15),
             ),
-            "Password"
-          ).build()
+            labelText: "Password"
+          )
         ),
         SizedBox(height: 50),
         GradientButton(

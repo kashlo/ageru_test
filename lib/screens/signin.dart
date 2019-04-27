@@ -1,18 +1,17 @@
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:ageru/components/gradient-button.dart';
 import 'package:ageru/components/navigator-hub.dart';
 import 'package:ageru/models/user.dart';
 import 'package:ageru/screens/signup_step_1.dart';
 import 'package:ageru/theme.dart';
-import 'package:ageru/ui/form_field_decoration.dart';
-import 'package:ageru/ui/signup_layout.dart';
+import 'package:ageru/components/signup_layout.dart';
 import 'package:ageru/validators/email-validator.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-
 
 class SigninScreen extends StatefulWidget {
 
@@ -23,7 +22,6 @@ class SigninScreen extends StatefulWidget {
 class _SigninScreenState extends State<SigninScreen> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   User user;
@@ -59,7 +57,6 @@ class _SigninScreenState extends State<SigninScreen> {
       child: Column(
         children: <Widget>[
           TextFormField(
-//            style: TextStyle(a),
             controller: _emailController,
             validator: (value) {
               if (value.isEmpty) {
@@ -70,13 +67,13 @@ class _SigninScreenState extends State<SigninScreen> {
               }
             },
             keyboardType: TextInputType.emailAddress,
-            decoration: FormFieldDecoration(
-              Padding(
+            decoration: InputDecoration(
+              prefixIcon: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Image.asset('assets/icons/email.png', width: 15),
               ),
-              "Email"
-            ).build()
+              labelText: "Email"
+            )
           ),
           SizedBox(height: 10),
           TextFormField(
@@ -88,13 +85,13 @@ class _SigninScreenState extends State<SigninScreen> {
               }
             },
             keyboardType: TextInputType.text,
-            decoration: FormFieldDecoration(
-              Padding(
+            decoration: InputDecoration(
+              prefixIcon: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Image.asset('assets/icons/lock.png', width: 15),
               ),
-              "Password"
-            ).build()
+              labelText: "Password"
+            ),
           ),
           SizedBox(height: 30),
           GradientButton(
@@ -112,8 +109,6 @@ class _SigninScreenState extends State<SigninScreen> {
       )
     );
   }
-
-
 
   _footerText(){
     return RichText(
@@ -142,18 +137,22 @@ class _SigninScreenState extends State<SigninScreen> {
 
   _buildContent() {
     return SignUpLayout(
-      content: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: ListView(
-          children: <Widget>[
-            SizedBox(height: 100),
-            _header(),
-            SizedBox(height: 60),
-            _signInForm(),
-            SizedBox(height: 20),
-            _footerText(),
-          ],
-        ),
+      content: ListView(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 100),
+                _header(),
+                SizedBox(height: 60),
+                _signInForm(),
+                SizedBox(height: 20),
+                _footerText(),
+              ],
+            ),
+          )
+        ],
       )
     );
   }

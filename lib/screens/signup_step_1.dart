@@ -1,13 +1,13 @@
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+
 import 'package:ageru/components/gradient-button.dart';
 import 'package:ageru/models/user.dart';
 import 'package:ageru/screens/signin.dart';
 import 'package:ageru/screens/signup_step_2.dart';
 import 'package:ageru/theme.dart';
-import 'package:ageru/ui/form_field_decoration.dart';
-import 'package:ageru/ui/signup_layout.dart';
+import 'package:ageru/components/signup_layout.dart';
 import 'package:ageru/validators/email-validator.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
 
 class SignupStep1Screen extends StatefulWidget {
 
@@ -59,13 +59,13 @@ class _SignupStep1ScreenState extends State<SignupStep1Screen> {
             }
           },
           keyboardType: TextInputType.emailAddress,
-          decoration: FormFieldDecoration(
-            Padding(
+          decoration: InputDecoration(
+            prefixIcon: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Image.asset('assets/icons/email.png', width: 15),
             ),
-            "Email"
-          ).build()
+            labelText: "Email"
+          )
         ),
         SizedBox(height: 50),
         GradientButton(

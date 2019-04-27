@@ -1,15 +1,17 @@
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:ageru/components/gradient-button.dart';
 import 'package:ageru/components/navigator-hub.dart';
 import 'package:ageru/models/user.dart';
 import 'package:ageru/screens/signin.dart';
 import 'package:ageru/theme.dart';
-import 'package:ageru/ui/signup_layout.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ageru/components/signup_layout.dart';
 
 class SignupStep4Screen extends StatefulWidget {
   SignupStep4Screen({Key key, this.user}) : super(key: key);
